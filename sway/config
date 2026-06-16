@@ -21,7 +21,7 @@ set $menu wofi --show drun
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/p51n4/Downloads/the_nature_of_fear.png fill
+output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 #
 # Example configuration:
 #
@@ -251,7 +251,7 @@ client.placeholder #665c54 #665c54 #665c54 #665c54 #665c54
 #keyboard configuration
 input type:keyboard {
     xkb_layout us,ru
-    xkb_options grp:alt_shift_toggle
+    xkb_options grp:win_space_toggle
 }
 
 #touchpad configuration
