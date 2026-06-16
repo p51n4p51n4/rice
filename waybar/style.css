@@ -1,0 +1,54 @@
+* {
+    font-family: FreeMono;
+    color: #ebdbb2;
+    font-size: 16px;
+    background-color: #282828;
+    border-radius: 0px;
+    transition: none;
+    animation: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+#waybar > box {
+    border-bottom: 1px solid #665c54;
+}
+.modules-left {
+    font-weight: bold;
+}
+
+.modules-center {
+    font-weight: bold;
+}
+
+.modules-right {
+    margin-right: 10px;
+}
+
+#network,
+#battery,
+#clock,
+#language {
+    font-weight: bold;
+}
+
+#custom-separator {
+    color: #665c54;
+}
+
+#workspaces button:hover {
+    border: 1px solid #ebdbb2;
+    text-shadow: none;
+    transition: none;
+    animation: none;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    color: #ebdbb2;
+    background-color: #3c3836;
+}
+
+#workspaces button.focused label {
+    color: #ebdbb2;
+    background-color: #3c3836;
+}

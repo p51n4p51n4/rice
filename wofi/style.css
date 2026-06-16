@@ -1,0 +1,41 @@
+* {
+    font-family: FreeMono;
+    color: #ebdbb2;
+    font-size: 16px;
+    border-radius: 0px;
+    transition: none;
+    animation: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+#entry {
+    outline: none;
+}
+
+#entry:selected {
+    background-color: #3c3836;
+}
+
+#input {
+    background-color: #3c3836;
+    border: none;
+    border-bottom: 1px solid #665c54;
+    border-top: 1px solid #665c54;
+}
+
+#input:focus {
+    border: 1px solid #ebdbb2;
+}
+
+#outer-box {
+    background-color: #282828;
+    border: 1px solid #665c54;
+    border-top: none;
+}
+
+scrolledwindow overshoot.top,
+scrolledwindow overshoot.bottom,
+scrolledwindow overshoot.left,
+scrolledwindow overshoot.right {
+    background: none;
+}

@@ -1,0 +1,10 @@
+term=kitty
+location=center
+prompt=Search...
+insensitive=true
+width=860
+hide_scroll=true
+no_actions=true
+use_search_box=false
+close_on_focus_loss=true
+lines=5
