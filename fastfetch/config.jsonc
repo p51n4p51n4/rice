@@ -35,11 +35,11 @@
     },
     {
       "type": "custom",
-      "format": "ranger - file manager",
+      "format": "iwctl - network controls",
     },
     {
       "type": "custom",
-      "format": "iwctl - network controls",
+      "format": "bluetoothctl - bluetooth controls",
     },
     {
       "type": "custom",
@@ -47,11 +47,19 @@
     },
     {
       "type": "custom",
-      "format": "nano *file* - default text editor",
+      "format": "ranger - file manager",
     },
     {
       "type": "custom",
       "format": "zed *folder/file* - cool text editor",
+    },
+    {
+      "type": "custom",
+      "format": "nano *file* - default text editor",
+    },
+    {
+      "type": "custom",
+      "format": "imv - image viewer",
     },
   ],
 }

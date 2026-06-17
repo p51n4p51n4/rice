@@ -218,7 +218,9 @@ mode "resize" {
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    # this command lets me take a shape, copy it to buffer and NOT save it somewhere
+    # run sudo pacman -S grim slurp wl-clipboard to install all the needed stuff
+    bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 #
 # Status Bar:
