@@ -42,8 +42,6 @@
 
 /* === контекстное меню === */
 menupopup,
-panel[type="arrow"],
-.panel-arrowcontent,
 .menupopup-arrowscrollbox {
     background-color: #282828 !important;
     color: #ebdbb2 !important;
@@ -103,6 +101,7 @@ menupopup::before {
 
 :root {
     --focus-outline-width: 1px !important;
+    --focus-outline-color: #ebdbb2 !important;
     --link-color: #7c6f64 !important;
     --link-color-hover: #ebdbb2 !important;
     --link-color-active: #ebdbb2 !important;

@@ -47,10 +47,6 @@
     },
     {
       "type": "custom",
-      "format": "ranger - file manager",
-    },
-    {
-      "type": "custom",
       "format": "zed *folder/file* - cool text editor",
     },
     {

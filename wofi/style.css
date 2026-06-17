@@ -9,6 +9,7 @@
     text-shadow: none;
 }
 #entry {
+    padding-left: 10px;
     outline: none;
 }
 
@@ -17,6 +18,7 @@
 }
 
 #input {
+    padding-left: 10px;
     background-color: #3c3836;
     border: none;
     border-bottom: 1px solid #665c54;

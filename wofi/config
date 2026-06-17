@@ -1,6 +1,6 @@
 term=kitty
 location=center
-prompt=Search...
+prompt=Search
 insensitive=true
 width=860
 hide_scroll=true
