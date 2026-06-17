@@ -51,7 +51,7 @@
 }
 
 #workspaces button.focused {
-    border: 1px solid #ebdbb2;
+    box-shadow: inset 0 0 0 1px #ebdbb2;
     color: #ebdbb2;
     background-color: #3c3836;
 }

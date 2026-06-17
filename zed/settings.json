@@ -79,10 +79,11 @@
     "default_width": 320.0,
   },
   "terminal": {
+    "working_directory": "current_project_directory",
     "dock": "bottom",
     "minimum_contrast": 50.0,
     "alternate_scroll": "off",
-    "cursor_shape": "bar",
+    "cursor_shape": "block",
     "show_count_badge": false,
   },
   "zoomed_padding": false,
