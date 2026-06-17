@@ -1,6 +1,7 @@
 /* === скрытие элементов === */
 .titlebar-close,
-#vertical-spacer {
+#vertical-spacer,
+#statuspanel {
     display: none !important;
 }
 
@@ -15,6 +16,8 @@
 *,
 *::before,
 *::after {
+    font-family: FreeMono;
+
     border-radius: 0 !important;
     box-shadow: none !important;
     text-shadow: none !important;
@@ -77,14 +80,32 @@ menuseparator {
 
 /* рамка popup */
 menupopup {
-    position: relative;
+    position: relative !important;
 }
 
 menupopup::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid #665c54;
-    pointer-events: none;
-    box-sizing: border-box;
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border: 1px solid #665c54 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+}
+
+#sidebar-tools-and-extensions-splitter:hover,
+#vertical-pinned-tabs-splitter:hover {
+    background-color: #ebdbb2 !important;
+}
+
+#sidebar-launcher-splitter {
+    width: 1px !important;
+}
+
+:root {
+    --focus-outline-width: 1px !important;
+    --link-color: #7c6f64 !important;
+    --link-color-hover: #ebdbb2 !important;
+    --link-color-active: #ebdbb2 !important;
+    --color-accent-attention: #ebdbb2 !important;
+    --color-accent-primary: #ebdbb2 !important;
 }
