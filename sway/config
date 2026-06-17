@@ -9,10 +9,11 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+#set $left h
+#set $down j
+#set $up k
+#set $right l
+
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
@@ -68,7 +69,8 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
     bindsym $mod+return exec $term
 
     # Kill focused window
-    bindsym $mod+q kill
+    # 24=q
+    bindcode $mod+24 kill
 
     # Start your launcher
     bindsym $mod+tab exec $menu
@@ -81,7 +83,8 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+r reload
+    # 27=r
+    bindcode $mod+Shift+27 reload
 
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -89,10 +92,11 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    # 43=h, 44=j, 45=k, 46=l
+    bindcode $mod+43 focus left
+    bindcode $mod+44 focus down
+    bindcode $mod+45 focus up
+    bindcode $mod+46 focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -100,10 +104,10 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindcode $mod+Shift+43 move left
+    bindcode $mod+Shift+44 move down
+    bindcode $mod+Shift+45 move up
+    bindcode $mod+Shift+46 move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -151,7 +155,8 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
     #bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    # 41=f
+    bindcode $mod+41 fullscreen
 
     # Toggle the current focus between tiling and floating mode
     #bindsym $mod+Shift+space floating toggle
