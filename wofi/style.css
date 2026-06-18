@@ -1,14 +1,17 @@
 * {
-    font-family: FreeMono;
+    background-color: transparent;
+    font-family: Iosevka Nerd Font;
     color: #ebdbb2;
-    font-size: 16px;
+    font-size: 11pt;
     border-radius: 0px;
     transition: none;
     animation: none;
     box-shadow: none;
     text-shadow: none;
 }
+
 #entry {
+    background-color: #282828;
     padding-left: 10px;
     outline: none;
 }
@@ -18,19 +21,19 @@
 }
 
 #input {
+    caret-color: #ebdbb2;
     padding-left: 10px;
-    background-color: #3c3836;
+    background-color: #282828;
     border: none;
-    border-bottom: 1px solid #665c54;
-    border-top: 1px solid #665c54;
+    border: 1px solid #665c54;
 }
 
 #input:focus {
+    background-color: #3c3836;
     border: 1px solid #ebdbb2;
 }
 
-#outer-box {
-    background-color: #282828;
+#inner-box {
     border: 1px solid #665c54;
     border-top: none;
 }

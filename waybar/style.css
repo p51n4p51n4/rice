@@ -1,7 +1,7 @@
 * {
-    font-family: FreeMono;
+    font-family: Iosevka Nerd Font;
     color: #ebdbb2;
-    font-size: 16px;
+    font-size: 11pt;
     border-radius: 0px;
     transition: none;
     animation: none;
@@ -11,23 +11,9 @@
     background-color: #282828;
     box-shadow: inset 0 -1px 0 #665c54;
 }
-.modules-left {
-    font-weight: bold;
-}
-
-.modules-center {
-    font-weight: bold;
-}
 
 .modules-right {
     margin-right: 10px;
-}
-
-#network,
-#battery,
-#clock,
-#language {
-    font-weight: bold;
 }
 
 #custom-separator {

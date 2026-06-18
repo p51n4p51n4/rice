@@ -10,7 +10,7 @@
 
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "custom/separator", "sway/language", "custom/separator", "network", "custom/separator", "battery", "custom/separator", "clock"],
+    "modules-right": ["tray", "custom/separator", "sway/language", "custom/separator", "network", "custom/separator", "clock"],
 
     "custom/separator": {
         "format": "|"
@@ -28,12 +28,6 @@
         "format-wifi": "wi-fi",
 	    "format-ethernet": "ethernet",
 	    "format-disconnected": "no connection",
-	    "tooltip": false
-    },
-
-    "battery": {
-        "format": "{capacity}%",
-	    "format-charging": "{capacity}%, charging",
 	    "tooltip": false
     },
 

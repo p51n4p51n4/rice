@@ -239,7 +239,7 @@ bar {
 exec_always autotiling
 
 #font
-font pango:FreeMono 12
+font pango:Iosevka Nerd Font 11
 
 #gaps between windows
 gaps inner 10
@@ -261,14 +261,16 @@ input type:keyboard {
     xkb_options grp:win_space_toggle
 }
 
-#touchpad configuration
-input type:touchpad {
-    tap enabled
-    natural_scroll enabled
-    tap_button_map lrm
-}
-
 #mouse pointer
 seat seat0 xcursor_theme capitaine_cursors_gruvbox_dark 24
+
+#mouse itself
+input type:pointer {
+    accel_profile flat
+    pointer_accel -0.8
+}
+
+#color picker
+bindcode $mod+33 exec hyprpicker -a
 
 include /etc/sway/config.d/*

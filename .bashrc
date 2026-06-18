@@ -7,9 +7,7 @@
 
 PS1='[\u@\h \w]\$ '
 
-alias zed=zeditor
-
-alias ls='ls -a --color=auto'
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias rm='rm -rf'
-alias cp='cp -r'
+
+alias zed=zeditor
