@@ -132,7 +132,7 @@ menupopup::before {
 
 #picture-in-picture-button,
 #trust-icon-container,
-#identity-box,
+/*#identity-box,*/
 .searchmode-switcher.chromeclass-toolbar-additional {
     display: none !important;
 }
