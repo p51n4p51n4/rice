@@ -127,5 +127,107 @@ menupopup::before {
 }
 
 .urlbar-input-container .button-background {
-    background-color: #665c54;
+    background-color: #665c54 !important;
+}
+
+#picture-in-picture-button,
+#trust-icon-container,
+#identity-box,
+.searchmode-switcher.chromeclass-toolbar-additional {
+    display: none !important;
+}
+
+#editBookmarkPanelContent {
+    color: #ebdbb2;
+}
+
+#appMenu-empty-profiles-button,
+#appMenu-new-private-window-button2,
+#appMenu-print-button2,
+#appMenu-save-file-button2,
+#appMenu-zoom-controls,
+#appMenu-report-broken-site-button,
+#appMenu-more-button2,
+#appMenu-help-button2,
+#appMenu-passwords-button,
+#placesContext_open\:newcontainertab,
+#placesContext_open\:newprivatewindow,
+#placesCmd_cut,
+#placesCmd_copy,
+#placesContext_paste_group,
+#context-sendimage,
+#context-savepage,
+#context-viewsource,
+#context-inspect-a11y,
+#context-inspect,
+#context-sep-sendpagetodevice,
+#reader-mode-button,
+#context-sendpagetodevice,
+#placesContext_cut,
+#placesContext_copy,
+#show-other-bookmarks_PersonalToolbar,
+#toggle_PersonalToolbar,
+#placesContext_showAllBookmarks,
+#placesContext_editSeparator,
+#placesContext_newSeparator {
+    display: none !important;
+}
+
+.sidebar-panel[lwt-sidebar],
+.sidebar-placesTreechildren {
+    outline: none !important;
+}
+
+#input {
+    color: #ebdbb2 !important;
+    border: 1px solid #665c54 !important;
+    background-color: #3c3836 !important;
+    background-image: none !important;
+    padding-inline-start: 5px !important;
+}
+
+#input::placeholder {
+    color: #665c54 !important;
+}
+
+#input:focus-visible {
+    outline: none !important;
+    border: 1px solid #ebdbb2 !important;
+}
+
+.urlbar-input::placeholder {
+    opacity: 1 !important;
+    color: #665c54 !important;
+}
+
+.date-card {
+    background-color: #3c3836 !important;
+}
+
+.findbar-textbox {
+    border: 1px solid #665c54 !important;
+}
+
+.checkbox-check {
+    appearance: none !important;
+    background-color: #3c3836 !important;
+    border: 1px solid #665c54 !important;
+}
+
+.checkbox-check[checked] {
+    background-color: #ebdbb2 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23282828' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border-color: #ebdbb2 !important;
+}
+
+.checkbox-check[disabled] {
+    background-color: #1d2021 !important;
+    border: 1px solid #3c3836 !important;
+}
+
+.buttons-wrapper {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }

@@ -33,18 +33,18 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 #
 # Moving around:
 #
-# 33=p, 47=;, 46=l, 46='
+# 25=w, 39=s, 38=a, 40=d
     # Move your focus around
-    bindcode $mod+33 focus up
-    bindcode $mod+47 focus down
-    bindcode $mod+46 focus left
-    bindcode $mod+48 focus right
+    bindcode $mod+25 focus up
+    bindcode $mod+39 focus down
+    bindcode $mod+38 focus left
+    bindcode $mod+40 focus right
 
     # Move the focused window with the same, but add Shift
-    bindcode $mod+Shift+33 move up
-    bindcode $mod+Shift+47 move down
-    bindcode $mod+Shift+46 move left
-    bindcode $mod+Shift+48 move right
+    bindcode $mod+Shift+25 move up
+    bindcode $mod+Shift+39 move down
+    bindcode $mod+Shift+38 move left
+    bindcode $mod+Shift+40 move right
 
 #
 # Workspaces:
