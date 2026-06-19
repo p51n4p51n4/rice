@@ -169,7 +169,8 @@ menupopup::before {
 #toggle_PersonalToolbar,
 #placesContext_showAllBookmarks,
 #placesContext_editSeparator,
-#placesContext_newSeparator {
+#placesContext_newSeparator,
+#context-media-eme-separator {
     display: none !important;
 }
 
