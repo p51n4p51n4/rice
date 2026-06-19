@@ -1,126 +1,169 @@
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
+# ОСНОВНЫЕ ПАРАМЕТРЫ
+#
 
-# Your preferred terminal emulator
-set $term kitty
-
-# Your preferred application launcher
-set $menu wofi --show drun
-
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# обои
 output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+return exec $term
+# смена поведения оконного менеджера через плагин
+# с ним окна выставляются по спирали
+exec_always autotiling
 
-    # Kill focused window
-    # 24=q
-    bindcode $mod+24 kill
+# перезагрузка оболочки
+#27=r
+bindcode $mod+27 reload
 
-    # Start your launcher
-    bindsym $mod+tab exec $menu
+# мод кнопка, если юзаешь альт то Mod1
+set $mod Mod4
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    floating_modifier $mod normal
+# терминал
+set $term kitty
+# запуск терминала
+bindsym $mod+return exec $term
 
-    # Reload the configuration file
-    # 27=r
-    bindcode $mod+27 reload
+# лаунчер
+set $menu wofi --show drun
+# запуск лаунчера
+bindsym $mod+tab exec $menu
 
-#
-# Moving around:
-#
-# 25=w, 39=s, 38=a, 40=d
-    # Move your focus around
-    bindcode $mod+25 focus up
-    bindcode $mod+39 focus down
-    bindcode $mod+38 focus left
-    bindcode $mod+40 focus right
-
-    # Move the focused window with the same, but add Shift
-    bindcode $mod+Shift+25 move up
-    bindcode $mod+Shift+39 move down
-    bindcode $mod+Shift+38 move left
-    bindcode $mod+Shift+40 move right
-
-#
-# Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-
-#
-# Status Bar:
-#
+# панель управления
 bar {
     swaybar_command waybar
 }
 
-# raplacing sway's tiling system with autotiling
-exec_always autotiling
 
-# font
+
+
+
+# ПОЛЕЗНЫЕ ПРИЛОЖЕНИЯ
+#
+
+# скриншотилка
+# o=32
+bindcode $mod+32 exec grim -g "$(slurp)" - | wl-copy
+
+# пипетка
+# i=31
+bindcode $mod+31 exec hyprpicker -a
+
+
+
+
+
+#НАВИГАЦИЯ И РАБОТА С ОКНАМИ
+#
+
+# завершить процесс активного окна
+# 24=q
+bindcode $mod+24 kill
+
+# перемещение фокуса
+# 43=h, 44=j, 45=k, 46=l
+bindcode $mod+43 focus left
+bindcode $mod+44 focus down
+bindcode $mod+45 focus up
+bindcode $mod+46 focus right
+
+# то же самое, но стрелками
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+
+# перемещение окна
+# 43=h, 44=j, 45=k, 46=l
+bindcode $mod+Shift+43 move left
+bindcode $mod+Shift+44 move down
+bindcode $mod+Shift+45 move up
+bindcode $mod+Shift+46 move right
+
+# то же самое, но стрелками
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+
+# перетаскиване окна по экрану мышью с зажатой мод кнопкой
+floating_modifier $mod normal
+
+
+
+
+
+# РАБОЧИЕ СТОЛЫ
+#
+
+# смена активного рабочей области
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# перемещение фокусного окна на нужную рабочую область
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+
+
+
+
+# ВНЕШНИЙ ВИД
+#
+
+# шрифт
 font pango:'IosevkaTermSlab Nerd Font Mono' 11
 
-# gaps between windows
+# отступы окон
 gaps inner 10
 
-# borders of windows
+# толщина границ окон
 default_border pixel 1
 default_floating_border pixel 1
 
-# colors of borders  #border #background #text #indicator #child_border
+# цвет границ окон
+# client.*state*  #border #background #text #indicator #child_border
+# чтобы на окнах не было градиента все цвета нужно делать одинаковыми
 client.focused #ebdbb2 #ebdbb2 #ebdbb2 #ebdbb2 #ebdbb2
 client.focused_inactive #665c54 #665c54 #665c54 #665c54 #665c54
 client.unfocused #665c54 #665c54 #665c54 #665c54 #665c54
 client.urgent #665c54 #665c54 #665c54 #665c54 #665c54
 client.placeholder #665c54 #665c54 #665c54 #665c54 #665c54
 
-# keyboard configuration
+
+
+
+
+# ПЕРИФЕРИЙНЫЕ УСТРОЙСТВА
+#
+
+# мышь и ее курсор
+input type:pointer {
+    accel_profile flat
+    pointer_accel -0.8
+}
+seat seat0 xcursor_theme capitaine_cursors_gruvbox_dark 24
+
+# клавиатура
 input type:keyboard {
     xkb_layout us,ru
     xkb_options grp:alt_shift_toggle
 }
 
-# mouse pointer
-seat seat0 xcursor_theme capitaine_cursors_gruvbox_dark 24
 
-# mouse itself
-input type:pointer {
-    accel_profile flat
-    pointer_accel -0.8
-}
 
-# color picker
-# i=31
-bindcode $mod+31 exec hyprpicker -a
 
-# screenshot
-# o=32
-bindcode $mod+32 exec grim -g "$(slurp)" - | wl-copy
 
 include /etc/sway/config.d/*
