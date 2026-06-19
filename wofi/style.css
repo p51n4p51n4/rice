@@ -1,8 +1,8 @@
 * {
     background-color: transparent;
-    font-family: Iosevka Nerd Font;
+    font-family: IosevkaTermSlab Nerd Font Mono;
     color: #ebdbb2;
-    font-size: 11pt;
+    font-size: 15px;
     border-radius: 0px;
     transition: none;
     animation: none;
@@ -24,7 +24,6 @@
     caret-color: #ebdbb2;
     padding-left: 10px;
     background-color: #282828;
-    border: none;
     border: 1px solid #665c54;
 }
 

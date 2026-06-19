@@ -1,3 +1,46 @@
+/* === глобальный reset (упрощённый) === */
+*,
+*::before,
+*::after {
+    font-family: IosevkaTermSlab Nerd Font Mono;
+
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+}
+
+:root {
+    --focus-outline-width: 1px !important;
+    --focus-outline-color: #ebdbb2 !important;
+    --link-color: #a89984 !important;
+    --link-color-hover: #ebdbb2 !important;
+    --link-color-active: #ebdbb2 !important;
+    --color-accent-attention: #ebdbb2 !important;
+    --color-accent-primary: #ebdbb2 !important;
+    --color-accent-primary-hover: #ebdbb2 !important;
+    --button-text-color-primary: #282828 !important;
+    --urlbarview-background-color-selected: #665c54 !important;
+    --panel-background-color-dimmed: #665c54 !important;
+    --urlbar-icon-fill-opacity: 1 !important;
+    --urlbar-box-background-color: #665c54 !important;
+    --urlbar-box-background-color-focus: #665c54 !important;
+    --urlbar-box-background-color-hover: #665c54 !important;
+    --button-background-color: #3c3836 !important;
+    --button-background-color-hover: #3c3836 !important;
+    --button-background-color-active: #3c3836 !important;
+}
+
+#notification-popup-box {
+    background-color: #665c54 !important;
+}
+
 /* === скрытие элементов === */
 .titlebar-close,
 #vertical-spacer,
@@ -10,24 +53,6 @@
     .sidebar-splitter:hover {
         background-color: #ebdbb2 !important;
     }
-}
-
-/* === глобальный reset (упрощённый) === */
-*,
-*::before,
-*::after {
-    font-family: FreeMono;
-
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
-    animation-iteration-count: 1 !important;
-
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
 }
 
 /* уважение reduced motion */
@@ -90,21 +115,17 @@ menupopup::before {
     box-sizing: border-box !important;
 }
 
+/*маленькие разделители на сайдбаре над кнопкой настроек и под закрепленными вкладками*/
 #sidebar-tools-and-extensions-splitter:hover,
 #vertical-pinned-tabs-splitter:hover {
     background-color: #ebdbb2 !important;
 }
 
+/*индикатор изменения размера на сайдбаре*/
 #sidebar-launcher-splitter {
     width: 1px !important;
 }
 
-:root {
-    --focus-outline-width: 1px !important;
-    --focus-outline-color: #ebdbb2 !important;
-    --link-color: #7c6f64 !important;
-    --link-color-hover: #ebdbb2 !important;
-    --link-color-active: #ebdbb2 !important;
-    --color-accent-attention: #ebdbb2 !important;
-    --color-accent-primary: #ebdbb2 !important;
+.urlbar-input-container .button-background {
+    background-color: #665c54;
 }

@@ -31,10 +31,6 @@
     },
     {
       "type": "custom",
-      "format": "ncdu - disk checking",
-    },
-    {
-      "type": "custom",
       "format": "iwctl - network controls",
     },
     {
