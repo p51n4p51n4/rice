@@ -12,8 +12,13 @@
     "modules-center": ["sway/window"],
     "modules-right": ["tray", "custom/separator", "sway/language", "custom/separator", "network", "custom/separator", "clock"],
 
+    "tray": {
+        "tooltip": false
+    },
+
     "custom/separator": {
-        "format": "|"
+        "format": "|",
+        "tooltip": false
     },
 
     "sway/workspaces": {
@@ -37,6 +42,7 @@
     },
 
     "sway/language": {
-        "format": "{short}"
+        "format": "{short}",
+        "tooltip": false
     }
 }

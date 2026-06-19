@@ -8,10 +8,6 @@ output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 # с ним окна выставляются по спирали
 exec_always autotiling
 
-# перезагрузка оболочки
-#27=r
-bindcode $mod+27 reload
-
 # мод кнопка, если юзаешь альт то Mod1
 set $mod Mod4
 
@@ -30,6 +26,10 @@ bar {
     swaybar_command waybar
 }
 
+# перезагрузка оболочки
+#27=r
+bindcode $mod+27 reload
+
 
 
 
@@ -38,12 +38,12 @@ bar {
 #
 
 # скриншотилка
-# o=32
-bindcode $mod+32 exec grim -g "$(slurp)" - | wl-copy
+# p=33
+bindcode $mod+33 exec grim -g "$(slurp)" - | wl-copy
 
 # пипетка
-# i=31
-bindcode $mod+31 exec hyprpicker -a
+# c=54
+bindcode $mod+54 exec hyprpicker -a
 
 
 
