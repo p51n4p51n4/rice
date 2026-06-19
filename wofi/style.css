@@ -32,6 +32,10 @@
     border: 1px solid #ebdbb2;
 }
 
+#input selection {
+    background-color: #665c54;
+}
+
 #inner-box {
     border: 1px solid #665c54;
     border-top: none;
