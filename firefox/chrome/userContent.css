@@ -1,3 +1,9 @@
+@-moz-document url-prefix("about:") {
+    * {
+        font-family: "IosevkaTermSlab Nerd Font Mono" !important;
+    }
+}
+
 @-moz-document url("about:home"), url("about:newtab") {
     .logo-and-wordmark {
         display: none !important;

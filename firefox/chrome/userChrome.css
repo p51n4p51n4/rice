@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-    font-family: IosevkaTermSlab Nerd Font Mono;
+    font-family: "IosevkaTermSlab Nerd Font Mono" !important;
 
     border-radius: 0 !important;
     box-shadow: none !important;
