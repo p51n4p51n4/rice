@@ -13,7 +13,7 @@
     "modules-right": ["tray", "custom/separator", "sway/language", "custom/separator", "network", "custom/separator", "clock"],
 
     "tray": {
-        "tooltip": false
+        "spacing": 8
     },
 
     "custom/separator": {
