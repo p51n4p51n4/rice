@@ -1,4 +1,14 @@
-/* === глобальный reset (упрощённый) === */
+/* ============================================================
+   userChrome.css — кастомизация интерфейса Firefox
+   Палитра: фон #282828 / #3c3836, текст/акцент #ebdbb2,
+            выделение/бордеры #665c54
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. ГЛОБАЛЬНЫЙ RESET
+   Унифицирует шрифт, убирает скругления/тени и почти все
+   анимации/transition по всему chrome UI.
+   ---------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -16,15 +26,23 @@
     transition-delay: 0ms !important;
 }
 
+/* ----------------------------------------------------------
+   2. ПЕРЕМЕННЫЕ ТЕМЫ
+   Переопределение нативных CSS-переменных Firefox под палитру.
+   Hover/active специально совпадают с обычным состоянием —
+   так убирается "мигание" цветом при наведении на кнопки
+   и адресную строку.
+   ---------------------------------------------------------- */
 :root {
     --focus-outline-width: 1px !important;
     --focus-outline-color: #ebdbb2 !important;
-    --link-color: #a89984 !important;
+    --link-color: #bdae93 !important;
     --link-color-hover: #ebdbb2 !important;
     --link-color-active: #ebdbb2 !important;
     --color-accent-attention: #ebdbb2 !important;
     --color-accent-primary: #ebdbb2 !important;
-    --color-accent-primary-hover: #ebdbb2 !important;
+    --color-accent-primary-hover: #bdae93 !important;
+    --color-accent-primary-active: #bdae93 !important;
     --button-text-color-primary: #282828 !important;
     --urlbarview-background-color-selected: #665c54 !important;
     --panel-background-color-dimmed: #665c54 !important;
@@ -33,39 +51,76 @@
     --urlbar-box-background-color-focus: #665c54 !important;
     --urlbar-box-background-color-hover: #665c54 !important;
     --button-background-color: #3c3836 !important;
-    --button-background-color-hover: #3c3836 !important;
-    --button-background-color-active: #3c3836 !important;
+    --button-background-color-hover: #665c54 !important;
+    --button-background-color-active: #665c54 !important;
 }
 
-#notification-popup-box {
-    background-color: #665c54 !important;
-}
-
-/* === скрытие элементов === */
+/* ----------------------------------------------------------
+   3. СКРЫТИЕ ЭЛЕМЕНТОВ
+   Всё, что просто прячется через display: none, собрано
+   в один блок (раньше было раскидано по трём разным местам).
+   ---------------------------------------------------------- */
+/* общие элементы окна */
 .titlebar-close,
 #vertical-spacer,
-#statuspanel {
+#statuspanel,
+
+/* кнопки тулбара / адресной строки */
+#picture-in-picture-button,
+#trust-icon-container,
+/* #identity-box, */
+.searchmode-switcher.chromeclass-toolbar-additional,
+#reader-mode-button,
+
+/* appMenu (гамбургер-меню) */
+#appMenu-empty-profiles-button,
+#appMenu-new-private-window-button2,
+#appMenu-print-button2,
+#appMenu-save-file-button2,
+#appMenu-zoom-controls,
+#appMenu-report-broken-site-button,
+#appMenu-more-button2,
+#appMenu-help-button2,
+#appMenu-passwords-button,
+
+/* контекстное меню закладок (places) и панель закладок */
+#placesContext_open\:newcontainertab,
+#placesContext_open\:newprivatewindow,
+#placesCmd_cut,
+#placesCmd_copy,
+#placesContext_paste,
+#placesContext_paste_group,
+#placesContext_pasteSeparator,
+#placesContext_cut,
+#placesContext_copy,
+#placesContext_showAllBookmarks,
+#placesContext_editSeparator,
+#placesContext_newSeparator,
+#show-other-bookmarks_PersonalToolbar,
+#toggle_PersonalToolbar,
+
+/* контекстное меню страницы */
+#context-sendimage,
+#context-savepage,
+#context-viewsource,
+#context-inspect-a11y,
+#context-inspect,
+#context-sep-sendpagetodevice,
+#context-sendpagetodevice,
+#context-media-eme-separator
+
+/* контекстное меню сайдбара */
+#toolbar-context-selectAllTabs,
+#toolbar-context-undoCloseTab,
+#tabbarItemsMenuSeparator,
+#toolbar-context-customize-sidebar,
+#toolbar-context-toggle-vertical-tabs {
     display: none !important;
 }
 
-/* === splitter sidebar === */
-@media -moz-pref("sidebar.revamp") {
-    .sidebar-splitter:hover {
-        background-color: #ebdbb2 !important;
-    }
-}
-
-/* уважение reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* === контекстное меню === */
+/* ----------------------------------------------------------
+   4. ВЫПАДАЮЩИЕ / КОНТЕКСТНЫЕ МЕНЮ (menupopup)
+   ---------------------------------------------------------- */
 menupopup,
 .menupopup-arrowscrollbox {
     background-color: #282828 !important;
@@ -81,31 +136,13 @@ menupopup,
     appearance: none !important;
 }
 
-/* пункты меню */
-menu,
-menuitem {
-    background-color: #282828 !important;
-    color: #ebdbb2 !important;
-}
-
-/* hover */
-menu[_moz-menuactive="true"],
-menuitem[_moz-menuactive="true"] {
-    background-color: #3c3836 !important;
-    color: #ebdbb2 !important;
-}
-
-/* разделители */
-menuseparator {
-    border-color: #665c54 !important;
-    opacity: 1 !important;
-}
-
-/* рамка popup */
+/* нужен position: relative, чтобы рамка через ::before ниже
+   позиционировалась относительно самого popup */
 menupopup {
     position: relative !important;
 }
 
+/* рамка вокруг popup вместо стандартной тени */
 menupopup::before {
     content: "" !important;
     position: absolute !important;
@@ -115,63 +152,52 @@ menupopup::before {
     box-sizing: border-box !important;
 }
 
-/*маленькие разделители на сайдбаре над кнопкой настроек и под закрепленными вкладками*/
+/* пункты меню в обычном состоянии */
+menu,
+menuitem {
+    background-color: #282828 !important;
+    color: #ebdbb2 !important;
+}
+
+/* пункты меню при наведении/выборе клавиатурой
+   (_moz-menuactive — атрибут, который Firefox сам навешивает
+   на активный в данный момент пункт меню) */
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+    background-color: #3c3836 !important;
+    color: #ebdbb2 !important;
+}
+
+/* разделители пунктов меню */
+menuseparator {
+    border-color: #665c54 !important;
+    opacity: 1 !important;
+}
+
+/* всплывающее окно уведомлений (например, при сохранении пароля) */
+#notification-popup-box {
+    background-color: #665c54 !important;
+}
+
+/* ----------------------------------------------------------
+   5. САЙДБАР
+   ---------------------------------------------------------- */
+@media -moz-pref("sidebar.revamp") {
+    .sidebar-splitter:hover {
+        background-color: #ebdbb2 !important;
+    }
+}
+
+/* маленькие разделители на сайдбаре: над кнопкой настроек
+   и под закреплёнными вкладками */
 #sidebar-tools-and-extensions-splitter:hover,
 #vertical-pinned-tabs-splitter:hover {
     background-color: #ebdbb2 !important;
 }
 
-/*индикатор изменения размера на сайдбаре*/
+/* индикатор изменения размера сайдбара */
 #sidebar-launcher-splitter {
     width: 1px !important;
-}
-
-.urlbar-input-container .button-background {
-    background-color: #665c54 !important;
-}
-
-#picture-in-picture-button,
-#trust-icon-container,
-/*#identity-box,*/
-.searchmode-switcher.chromeclass-toolbar-additional {
-    display: none !important;
-}
-
-#editBookmarkPanelContent {
-    color: #ebdbb2;
-}
-
-#appMenu-empty-profiles-button,
-#appMenu-new-private-window-button2,
-#appMenu-print-button2,
-#appMenu-save-file-button2,
-#appMenu-zoom-controls,
-#appMenu-report-broken-site-button,
-#appMenu-more-button2,
-#appMenu-help-button2,
-#appMenu-passwords-button,
-#placesContext_open\:newcontainertab,
-#placesContext_open\:newprivatewindow,
-#placesCmd_cut,
-#placesCmd_copy,
-#placesContext_paste_group,
-#context-sendimage,
-#context-savepage,
-#context-viewsource,
-#context-inspect-a11y,
-#context-inspect,
-#context-sep-sendpagetodevice,
-#reader-mode-button,
-#context-sendpagetodevice,
-#placesContext_cut,
-#placesContext_copy,
-#show-other-bookmarks_PersonalToolbar,
-#toggle_PersonalToolbar,
-#placesContext_showAllBookmarks,
-#placesContext_editSeparator,
-#placesContext_newSeparator,
-#context-media-eme-separator {
-    display: none !important;
 }
 
 .sidebar-panel[lwt-sidebar],
@@ -179,6 +205,19 @@ menupopup::before {
     outline: none !important;
 }
 
+/* ----------------------------------------------------------
+   6. АДРЕСНАЯ СТРОКА / ПОЛЯ ВВОДА / ЧЕКБОКСЫ
+   ---------------------------------------------------------- */
+.urlbar-input-container .button-background {
+    background-color: #665c54 !important;
+}
+
+.urlbar-input::placeholder {
+    opacity: 1 !important;
+    color: #665c54 !important;
+}
+
+/* текстовое поле (например, поиск в библиотеке закладок) */
 #input {
     color: #ebdbb2 !important;
     border: 1px solid #665c54 !important;
@@ -196,11 +235,6 @@ menupopup::before {
     border: 1px solid #ebdbb2 !important;
 }
 
-.urlbar-input::placeholder {
-    opacity: 1 !important;
-    color: #665c54 !important;
-}
-
 .date-card {
     background-color: #3c3836 !important;
 }
@@ -209,10 +243,15 @@ menupopup::before {
     border: 1px solid #665c54 !important;
 }
 
+/* чекбоксы (настройки, диалоги) */
 .checkbox-check {
     appearance: none !important;
     background-color: #3c3836 !important;
     border: 1px solid #665c54 !important;
+}
+
+.checkbox-check:hover {
+    background-color: #665c54 !important;
 }
 
 .checkbox-check[checked] {
@@ -223,22 +262,36 @@ menupopup::before {
     border-color: #ebdbb2 !important;
 }
 
+.checkbox-check[checked]:hover {
+    background-color: #bdae93 !important;
+}
+
 .checkbox-check[disabled] {
     background-color: #1d2021 !important;
     border: 1px solid #3c3836 !important;
 }
 
+/* ----------------------------------------------------------
+   7. ПАНЕЛЬ "РЕДАКТИРОВАНИЕ ЗАКЛАДКИ" (editBMPanel)
+   ---------------------------------------------------------- */
+#editBookmarkPanelContent {
+    color: #ebdbb2;
+}
+
+/* скрывает обвязку кнопок-тегов в панели закладки */
 .buttons-wrapper {
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
+/* поле с именем закладки */
 #editBMPanel_namePicker {
     color: #ebdbb2 !important;
     background-color: #3c3836 !important;
     border: 1px solid #665c54 !important;
 }
 
+/* --- дерево выбора папки --- */
 #editBMPanel_folderTree {
     color: #ebdbb2 !important;
     background-color: #3c3836 !important;
@@ -249,44 +302,58 @@ menupopup::before {
     width: 100% !important;
 }
 
-/* текст и фон при наведении */
+/* treechildren рисует строки сама (это не обычные DOM-узлы),
+   поэтому фон/текст/иконка строки — три отдельных
+   псевдоэлемента: ::-moz-tree-row (фон), ::-moz-tree-cell-text
+   (текст), ::-moz-tree-image (иконка папки). Каждому нужно
+   явно задавать цвет под каждое состояние — иначе он не
+   "наследуется" от row и остаётся системным (отсюда, например,
+   белый текст/иконка у выделенной строки, если задать цвет
+   только на row). */
+
+/* наведение мышью */
 #editBMPanel_folderTree treechildren::-moz-tree-row(hover) {
     background-color: #665c54 !important;
-}
-#editBMPanel_folderTree treechildren::-moz-tree-image(hover) {
-    fill: #ebdbb2 !important;
 }
 #editBMPanel_folderTree treechildren::-moz-tree-cell-text(hover) {
     color: #ebdbb2 !important;
 }
+#editBMPanel_folderTree treechildren::-moz-tree-image(hover) {
+    fill: #ebdbb2 !important;
+}
 
-/* текст и фон выбранной строки, дерево в фокусе */
+/* выбранная строка, дерево в фокусе */
 #editBMPanel_folderTree treechildren::-moz-tree-row(selected, focus) {
     background-color: #665c54 !important;
     outline: none !important;
 }
-#editBMPanel_folderTree treechildren::-moz-tree-image(selected, focus) {
-    fill: #ebdbb2 !important;
-}
 #editBMPanel_folderTree treechildren::-moz-tree-cell-text(selected, focus) {
     color: #ebdbb2 !important;
 }
+#editBMPanel_folderTree treechildren::-moz-tree-image(selected, focus) {
+    fill: #ebdbb2 !important;
+}
 
-/* текст и фон выбранной строки, фокус не на дереве */
+/* выбранная строка, фокус не на дереве */
 #editBMPanel_folderTree treechildren::-moz-tree-row(selected) {
     background-color: #665c54 !important;
     outline: none !important;
 }
-#editBMPanel_folderTree treechildren::-moz-tree-image(selected) {
-    fill: #ebdbb2 !important;
-}
 #editBMPanel_folderTree treechildren::-moz-tree-cell-text(selected) {
     color: #ebdbb2 !important;
 }
+#editBMPanel_folderTree treechildren::-moz-tree-image(selected) {
+    fill: #ebdbb2 !important;
+}
 
+/* ----------------------------------------------------------
+   8. ВЫДЕЛЕНИЕ ТЕКСТА (::selection)
+   ::-moz-selection — устаревший алиас, оставлен для
+   совместимости со старыми/встроенными контекстами рендеринга.
+   ---------------------------------------------------------- */
 *|*::selection {
     background-color: #665c54 !important;
-    color: #ebdbb2 !important; /* подберите под свою тему */
+    color: #ebdbb2 !important;
 }
 
 *|*::-moz-selection {
