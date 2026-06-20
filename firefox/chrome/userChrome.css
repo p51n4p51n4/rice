@@ -367,6 +367,27 @@ menuseparator {
     fill: #ebdbb2 !important;
 }
 
+/* отдельное окно с редактированием закладки */
+#bookmarkpropertiesdialog {
+    color: #ebdbb2 !important;
+    background-color: #282828 !important;
+    border: 1px solid #665c54 !important;
+}
+
+#titleContainer,
+.titleIcon {
+    color: #ebdbb2 !important;
+    background-color: #282828 !important;
+}
+
+#editBMPanel_locationField,
+#editBMPanel_tagsField,
+#editBMPanel_keywordField {
+    color: #ebdbb2 !important;
+    background-color: #282828 !important;
+    border: 1px solid #665c54 !important;
+}
+
 /* ----------------------------------------------------------
    8. ВЫДЕЛЕНИЕ ТЕКСТА (::selection)
    ::-moz-selection — устаревший алиас, оставлен для
