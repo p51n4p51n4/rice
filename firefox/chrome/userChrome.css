@@ -96,6 +96,8 @@
 #placesContext_showAllBookmarks,
 #placesContext_editSeparator,
 #placesContext_newSeparator,
+#placesContext_openBookmarkContainer\:tabs,
+#placesContext_openSeparator,
 #show-other-bookmarks_PersonalToolbar,
 #toggle_PersonalToolbar,
 
@@ -107,14 +109,33 @@
 #context-inspect,
 #context-sep-sendpagetodevice,
 #context-sendpagetodevice,
-#context-media-eme-separator
+#context-media-eme-separator,
 
 /* контекстное меню сайдбара */
 #toolbar-context-selectAllTabs,
 #toolbar-context-undoCloseTab,
 #tabbarItemsMenuSeparator,
 #toolbar-context-customize-sidebar,
-#toolbar-context-toggle-vertical-tabs {
+#toolbar-context-toggle-vertical-tabs,
+
+/* контекстное меню ссылок */
+#context-openlinkinsplitview,
+#context-openlinkinusercontext-menu,
+#context-openlinkprivate,
+#context-savelink,
+#context-stripOnShareLink,
+#context-sendlinktodevice,
+#context-sep-sendlinktodevice,
+#context-sep-sendlinktodevice,
+#context-searchselect,
+#context-sep-copylink,
+
+/* контекстное меню адресной строки */
+menuitem[data-l10n-id="text-action-undo"],
+menuitem[data-l10n-id="text-action-redo"],
+.textbox-contextmenu menuseparator,
+#paste-and-go,
+menuitem[data-l10n-id="text-action-select-all"] {
     display: none !important;
 }
 

@@ -12,6 +12,10 @@
     "modules-center": ["sway/window"],
     "modules-right": ["tray", "custom/separator", "sway/language", "custom/separator", "network", "custom/separator", "clock"],
 
+    "sway/window": {
+        "max-length": 50
+    }
+
     "tray": {
         "spacing": 8
     },
