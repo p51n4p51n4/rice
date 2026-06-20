@@ -232,3 +232,64 @@ menupopup::before {
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
+#editBMPanel_namePicker {
+    color: #ebdbb2 !important;
+    background-color: #3c3836 !important;
+    border: 1px solid #665c54 !important;
+}
+
+#editBMPanel_folderTree {
+    color: #ebdbb2 !important;
+    background-color: #3c3836 !important;
+    border: none !important;
+}
+
+#editBMPanel_folderTree treechildren::-moz-tree-row {
+    width: 100% !important;
+}
+
+/* текст и фон при наведении */
+#editBMPanel_folderTree treechildren::-moz-tree-row(hover) {
+    background-color: #665c54 !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-image(hover) {
+    fill: #ebdbb2 !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-cell-text(hover) {
+    color: #ebdbb2 !important;
+}
+
+/* текст и фон выбранной строки, дерево в фокусе */
+#editBMPanel_folderTree treechildren::-moz-tree-row(selected, focus) {
+    background-color: #665c54 !important;
+    outline: none !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-image(selected, focus) {
+    fill: #ebdbb2 !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-cell-text(selected, focus) {
+    color: #ebdbb2 !important;
+}
+
+/* текст и фон выбранной строки, фокус не на дереве */
+#editBMPanel_folderTree treechildren::-moz-tree-row(selected) {
+    background-color: #665c54 !important;
+    outline: none !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-image(selected) {
+    fill: #ebdbb2 !important;
+}
+#editBMPanel_folderTree treechildren::-moz-tree-cell-text(selected) {
+    color: #ebdbb2 !important;
+}
+
+*|*::selection {
+    background-color: #665c54 !important;
+    color: #ebdbb2 !important; /* подберите под свою тему */
+}
+
+*|*::-moz-selection {
+    background-color: #665c54 !important;
+    color: #ebdbb2 !important;
+}
