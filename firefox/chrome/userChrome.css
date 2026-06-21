@@ -51,8 +51,8 @@
     --urlbar-box-background-color-focus: #665c54 !important;
     --urlbar-box-background-color-hover: #665c54 !important;
     --button-background-color: #3c3836 !important;
-    --button-background-color-hover: #665c54 !important;
-    --button-background-color-active: #665c54 !important;
+    --button-background-color-hover: #3c3836 !important;
+    --button-background-color-active: #3c3836 !important;
 }
 
 /* ----------------------------------------------------------
@@ -110,10 +110,11 @@
 #context-sep-sendpagetodevice,
 #context-sendpagetodevice,
 #context-media-eme-separator,
+#context-sep-selectall,
 
 /* контекстное меню сайдбара */
 #toolbar-context-selectAllTabs,
-#toolbar-context-undoCloseTab,
+/*#toolbar-context-undoCloseTab,*/
 #tabbarItemsMenuSeparator,
 #toolbar-context-customize-sidebar,
 #toolbar-context-toggle-vertical-tabs,
@@ -200,6 +201,10 @@ menuseparator {
     background-color: #665c54 !important;
 }
 
+.subviewbutton:hover {
+    background-color: #3c3836 !important;
+}
+
 /* ----------------------------------------------------------
    5. САЙДБАР
    ---------------------------------------------------------- */
@@ -224,6 +229,11 @@ menuseparator {
 .sidebar-panel[lwt-sidebar],
 .sidebar-placesTreechildren {
     outline: none !important;
+}
+
+.tab-background:hover,
+#tabs-newtab-button:hover {
+    background-color: #3c3836 !important;
 }
 
 /* ----------------------------------------------------------
@@ -272,7 +282,7 @@ menuseparator {
 }
 
 .checkbox-check:hover {
-    background-color: #665c54 !important;
+    background-color: #3c3836 !important;
 }
 
 .checkbox-check[checked] {

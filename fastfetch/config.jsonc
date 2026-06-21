@@ -19,14 +19,6 @@
     "separator",
     {
       "type": "custom",
-      "format": "tldr *command* - hints for command",
-    },
-    {
-      "type": "custom",
-      "format": "man *command* - documentation for command",
-    },
-    {
-      "type": "custom",
       "format": "gotop - system monitoring",
     },
     {
@@ -43,15 +35,31 @@
     },
     {
       "type": "custom",
-      "format": "zed *folder/file* - cool text editor",
+      "format": "ranger - file manager",
     },
     {
       "type": "custom",
-      "format": "nano *file* - default text editor",
+      "format": "zed - text editor",
     },
     {
       "type": "custom",
       "format": "imv - image viewer",
+    },
+    {
+      "type": "custom",
+      "format": "cmus - audio player",
+    },
+    {
+      "type": "custom",
+      "format": "mpv - video player",
+    },
+    {
+      "type": "custom",
+      "format": "tldr - hints for command",
+    },
+    {
+      "type": "custom",
+      "format": "man - documentation for command",
     },
   ],
 }
