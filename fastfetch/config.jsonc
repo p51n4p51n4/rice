@@ -23,11 +23,15 @@
     },
     {
       "type": "custom",
-      "format": "iwctl - network controls",
+      "format": "ncdu - storage usage",
     },
     {
       "type": "custom",
-      "format": "bluetoothctl - bluetooth controls",
+      "format": "impala - network controls",
+    },
+    {
+      "type": "custom",
+      "format": "bluetui - bluetooth controls",
     },
     {
       "type": "custom",
@@ -55,11 +59,11 @@
     },
     {
       "type": "custom",
-      "format": "tldr - hints for command",
+      "format": "tldr - hint for the command",
     },
     {
       "type": "custom",
-      "format": "man - documentation for command",
+      "format": "man - documentation for the command",
     },
   ],
 }

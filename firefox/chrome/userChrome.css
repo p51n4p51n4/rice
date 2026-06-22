@@ -29,9 +29,6 @@
 /* ----------------------------------------------------------
    2. ПЕРЕМЕННЫЕ ТЕМЫ
    Переопределение нативных CSS-переменных Firefox под палитру.
-   Hover/active специально совпадают с обычным состоянием —
-   так убирается "мигание" цветом при наведении на кнопки
-   и адресную строку.
    ---------------------------------------------------------- */
 :root {
     --focus-outline-width: 1px !important;
@@ -51,8 +48,8 @@
     --urlbar-box-background-color-focus: #665c54 !important;
     --urlbar-box-background-color-hover: #665c54 !important;
     --button-background-color: #3c3836 !important;
-    --button-background-color-hover: #3c3836 !important;
-    --button-background-color-active: #3c3836 !important;
+    --button-background-color-hover: #665c54 !important;
+    --button-background-color-active: #665c54 !important;
 }
 
 /* ----------------------------------------------------------
@@ -68,7 +65,6 @@
 /* кнопки тулбара / адресной строки */
 #picture-in-picture-button,
 #trust-icon-container,
-/* #identity-box, */
 .searchmode-switcher.chromeclass-toolbar-additional,
 #reader-mode-button,
 
@@ -112,7 +108,8 @@
 #context-media-eme-separator,
 #context-sep-selectall,
 
-/* контекстное меню сайдбара */
+/* контекстное меню тулбара */
+#toolbar-context-move-to-panel,
 #toolbar-context-selectAllTabs,
 /*#toolbar-context-undoCloseTab,*/
 #tabbarItemsMenuSeparator,
@@ -126,7 +123,6 @@
 #context-savelink,
 #context-stripOnShareLink,
 #context-sendlinktodevice,
-#context-sep-sendlinktodevice,
 #context-sep-sendlinktodevice,
 #context-searchselect,
 #context-sep-copylink,
@@ -236,6 +232,10 @@ menuseparator {
     background-color: #3c3836 !important;
 }
 
+.tabbrowser-tab[visuallyselected]:hover .tab-background {
+    background-color: #665c54 !important;
+}
+
 /* ----------------------------------------------------------
    6. АДРЕСНАЯ СТРОКА / ПОЛЯ ВВОДА / ЧЕКБОКСЫ
    ---------------------------------------------------------- */
@@ -282,7 +282,7 @@ menuseparator {
 }
 
 .checkbox-check:hover {
-    background-color: #3c3836 !important;
+    background-color: #665c54 !important;
 }
 
 .checkbox-check[checked] {
