@@ -155,7 +155,7 @@ client.placeholder #665c54 #665c54 #665c54 #665c54 #665c54
 # мышь и ее курсор
 input type:pointer {
     accel_profile flat
-    pointer_accel -0.8
+    pointer_accel -0.7
 }
 seat seat0 xcursor_theme capitaine_cursors_gruvbox_dark 24
 

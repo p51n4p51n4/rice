@@ -47,6 +47,7 @@
     --urlbar-box-background-color: #665c54 !important;
     --urlbar-box-background-color-focus: #665c54 !important;
     --urlbar-box-background-color-hover: #665c54 !important;
+    --button-text-color: #ebdbb2 !important;
     --button-background-color: #3c3836 !important;
     --button-background-color-hover: #665c54 !important;
     --button-background-color-active: #665c54 !important;
@@ -79,7 +80,7 @@
 #appMenu-help-button2,
 #appMenu-passwords-button,
 
-/* контекстное меню закладок (places) и панель закладок */
+/* контекстное меню закладок и панель закладок */
 #placesContext_open\:newcontainertab,
 #placesContext_open\:newprivatewindow,
 #placesCmd_cut,
@@ -111,7 +112,6 @@
 /* контекстное меню тулбара */
 #toolbar-context-move-to-panel,
 #toolbar-context-selectAllTabs,
-/*#toolbar-context-undoCloseTab,*/
 #tabbarItemsMenuSeparator,
 #toolbar-context-customize-sidebar,
 #toolbar-context-toggle-vertical-tabs,
@@ -127,7 +127,13 @@
 #context-searchselect,
 #context-sep-copylink,
 
+/* контекстное меню изображений */
+#context-visual-search,
+#context-copyimage-contents,
+#context-copyimage,
+
 /* контекстное меню адресной строки */
+#strip-on-share,
 menuitem[data-l10n-id="text-action-undo"],
 menuitem[data-l10n-id="text-action-redo"],
 .textbox-contextmenu menuseparator,
@@ -192,6 +198,12 @@ menuseparator {
     opacity: 1 !important;
 }
 
+/* меню папок */
+.openintabs-menuitem,
+.bookmarks-actions-menuseparator {
+    display: none !important;
+}
+
 /* всплывающее окно уведомлений (например, при сохранении пароля) */
 #notification-popup-box {
     background-color: #665c54 !important;
@@ -199,6 +211,28 @@ menuseparator {
 
 .subviewbutton:hover {
     background-color: #3c3836 !important;
+}
+
+/* диалоговые окна, появляются в разных местах, вероятно, используют один и тот же класс */
+#commonDialog {
+    background-color: #282828 !important;
+    color: #ebdbb2 !important;
+    border: 1px solid #665c54 !important;
+    min-height: fit-content !important;
+}
+
+.dialogBox {
+    min-height: calc(177px);
+}
+
+/* при смене шрифтов в браузере у них появляется проблема с высотой,
+это, кажется, решает эту проблему */
+.sizeDetermined,
+.sizeDetermined::part(content-box),
+.sizeDetermined #infoBody,
+.sizeDetermined #infoRow,
+.sizeDetermined #infoContainer {
+    min-height: fit-content !important;
 }
 
 /* ----------------------------------------------------------
