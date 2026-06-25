@@ -98,6 +98,20 @@
 #show-other-bookmarks_PersonalToolbar,
 #toggle_PersonalToolbar,
 
+/* контекстное меню вкладок */
+#context_moveTabToNewGroup,
+#context_moveTabToSplitView,
+#context_unloadTab,
+#context_duplicateTab,
+#context_moveTabOptions,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeDuplicateTabs,
+#context_closeTabOptions,
+.share-tab-url-item,
+#context_sendTabToDevice,
+#context_sendTabToDeviceSeparator,
+
 /* контекстное меню страницы */
 #context-sendimage,
 #context-savepage,
@@ -192,11 +206,11 @@ menuitem[_moz-menuactive="true"] {
     color: #ebdbb2 !important;
 }
 
-/* разделители пунктов меню */
+/* разделители пунктов меню
 menuseparator {
     border-color: #665c54 !important;
     opacity: 1 !important;
-}
+}*/
 
 /* меню папок */
 .openintabs-menuitem,
