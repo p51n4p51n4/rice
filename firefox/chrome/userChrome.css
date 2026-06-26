@@ -163,13 +163,20 @@ menuitem[data-l10n-id="text-action-select-all"] {
    - sidebarRevampSeparator             — разделитель в новом сайдбаре
    - sidebar-tools-and-extensions-splitter — сплиттер над кнопкой настроек
    ---------------------------------------------------------- */
+
+.close-icon:hover {
+    background-color: #665c54 !important;
+}
+
+/* полоска, которая появляется при наведении на край сайдбара,
+показывает, что его можно увеличить или уменьшить*/
 #sidebarRevampSeparator,
 #sidebar-tools-and-extensions-splitter {
     display: none !important;
 }
 
 /* основной сплиттер сайдбара — сужен и скрыт визуально,
-   но оставлен функциональным (opacity вместо display: none) */
+но оставлен функциональным (opacity вместо display: none) */
 #sidebar-splitter {
     width: 1px !important;
     opacity: 0 !important;
