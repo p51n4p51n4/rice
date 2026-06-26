@@ -2,12 +2,24 @@
    userChrome.css — кастомизация интерфейса Firefox
    Палитра: фон #282828 / #3c3836, текст/акцент #ebdbb2,
             выделение/бордеры #665c54
+   ============================================================
+
+   ОГЛАВЛЕНИЕ:
+   1. Глобальный reset
+   2. Переменные темы
+   3. Тулбар и адресная строка
+   4. Сайдбар и вкладки
+   5. Контекстные меню и попапы
+   6. Диалоговые окна
+   7. Панель редактирования закладки (editBMPanel)
+   8. Поля ввода и чекбоксы
+   9. Выделение текста
    ============================================================ */
 
 /* ----------------------------------------------------------
    1. ГЛОБАЛЬНЫЙ RESET
-   Унифицирует шрифт, убирает скругления/тени и почти все
-   анимации/transition по всему chrome UI.
+   Унифицирует шрифт, убирает скругления/тени и анимации
+   по всему chrome UI.
    ---------------------------------------------------------- */
 *,
 *::before,
@@ -19,37 +31,12 @@
     text-shadow: none !important;
 
     animation-delay: 0ms !important;
-
     transition-delay: 0ms !important;
 }
 
-/* ----------------------------------------------------------
-   2. ПЕРЕМЕННЫЕ ТЕМЫ
-   Переопределение нативных CSS-переменных Firefox под палитру.
-   ---------------------------------------------------------- */
-:root {
-    --focus-outline-width: 1px !important;
-    --focus-outline-color: #ebdbb2 !important;
-    --link-color: #bdae93 !important;
-    --link-color-hover: #ebdbb2 !important;
-    --link-color-active: #ebdbb2 !important;
-    --color-accent-attention: #ebdbb2 !important;
-    --color-accent-primary: #ebdbb2 !important;
-    --color-accent-primary-hover: #bdae93 !important;
-    --color-accent-primary-active: #bdae93 !important;
-    --button-text-color-primary: #282828 !important;
-    --urlbarview-background-color-selected: #665c54 !important;
-    --panel-background-color-dimmed: #665c54 !important;
-    --urlbar-icon-fill-opacity: 1 !important;
-    --urlbar-box-background-color: #665c54 !important;
-    --urlbar-box-background-color-focus: #665c54 !important;
-    --urlbar-box-background-color-hover: #665c54 !important;
-    --button-text-color: #ebdbb2 !important;
-    --button-background-color: #3c3836 !important;
-    --button-background-color-hover: #665c54 !important;
-    --button-background-color-active: #665c54 !important;
-}
-
+/* Отдельный фикс для анимированных попапов и стрелочных панелей —
+   они используют собственный механизм transition, который не
+   перекрывается глобальным reset'ом выше. */
 .animatable-menupopup,
 panel[type="arrow"] {
     &:not([animate="false"]) {
@@ -58,22 +45,86 @@ panel[type="arrow"] {
 }
 
 /* ----------------------------------------------------------
-   3. СКРЫТИЕ ЭЛЕМЕНТОВ
-   Всё, что просто прячется через display: none, собрано
-   в один блок (раньше было раскидано по трём разным местам).
+   2. ПЕРЕМЕННЫЕ ТЕМЫ
+   Переопределение нативных CSS-переменных Firefox под палитру.
+   Hover/active у адресной строки намеренно совпадают с обычным
+   состоянием — убирает "мигание" при наведении. У кнопок hover
+   чуть темнее для ощущения интерактивности.
    ---------------------------------------------------------- */
-/* общие элементы окна */
+:root {
+    --focus-outline-width: 1px !important;
+    --focus-outline-color: #ebdbb2 !important;
+
+    --link-color: #bdae93 !important;
+    --link-color-hover: #ebdbb2 !important;
+    --link-color-active: #ebdbb2 !important;
+
+    --color-accent-attention: #ebdbb2 !important;
+    --color-accent-primary: #ebdbb2 !important;
+    --color-accent-primary-hover: #bdae93 !important;
+    --color-accent-primary-active: #bdae93 !important;
+
+    --button-text-color: #ebdbb2 !important;
+    --button-text-color-primary: #282828 !important;
+    --button-background-color: #3c3836 !important;
+    --button-background-color-hover: #665c54 !important;
+    --button-background-color-active: #665c54 !important;
+
+    --urlbar-icon-fill-opacity: 1 !important;
+    --urlbar-box-background-color: #665c54 !important;
+    --urlbar-box-background-color-focus: #665c54 !important;
+    --urlbar-box-background-color-hover: #665c54 !important;
+    --urlbarview-background-color-selected: #665c54 !important;
+
+    --panel-background-color-dimmed: #665c54 !important;
+}
+
+/* ----------------------------------------------------------
+   3. ТУЛБАР И АДРЕСНАЯ СТРОКА
+
+   Скрытие:
+   - titlebar-close    — кнопка закрытия в тайтлбаре
+   - vertical-spacer   — спейсер в вертикальном режиме
+   - statuspanel       — строка статуса при наведении на ссылку
+   - picture-in-picture-button — кнопка PiP на видео
+   - trust-icon-container — иконка доверия сайту (намеренно не #identity-box —
+                            он нужен для запросов доступа к устройствам)
+   - searchmode-switcher — переключатель режима поиска
+   - reader-mode-button  — кнопка режима чтения
+   ---------------------------------------------------------- */
 .titlebar-close,
 #vertical-spacer,
 #statuspanel,
-
-/* кнопки тулбара / адресной строки */
 #picture-in-picture-button,
 #trust-icon-container,
 .searchmode-switcher.chromeclass-toolbar-additional,
-#reader-mode-button,
+#reader-mode-button {
+    display: none !important;
+}
 
-/* appMenu (гамбургер-меню) */
+/* отступы панели навигации — компенсация под кастомный шрифт */
+#nav-bar-customization-target {
+    margin-top: 2px !important;
+    margin-bottom: 3px !important;
+}
+
+/* кнопка действия в контейнере адресной строки */
+.urlbar-input-container .button-background {
+    background-color: #665c54 !important;
+}
+
+/* плейсхолдер адресной строки */
+.urlbar-input::placeholder {
+    opacity: 1 !important;
+    color: #665c54 !important;
+}
+
+/* всплывающее окно уведомлений (запрос пароля, геолокации и т.п.) */
+#notification-popup-box {
+    background-color: #665c54 !important;
+}
+
+/* скрытие пунктов гамбургер-меню (appMenu) */
 #appMenu-empty-profiles-button,
 #appMenu-new-private-window-button2,
 #appMenu-print-button2,
@@ -82,9 +133,175 @@ panel[type="arrow"] {
 #appMenu-report-broken-site-button,
 #appMenu-more-button2,
 #appMenu-help-button2,
-#appMenu-passwords-button,
+#appMenu-passwords-button {
+    display: none !important;
+}
 
-/* контекстное меню закладок и панель закладок */
+/* скрытие пунктов контекстного меню тулбара */
+#toolbar-context-move-to-panel,
+#toolbar-context-selectAllTabs,
+#tabbarItemsMenuSeparator,
+#toolbar-context-customize-sidebar,
+#toolbar-context-toggle-vertical-tabs {
+    display: none !important;
+}
+
+/* скрытие пунктов контекстного меню адресной строки */
+#strip-on-share,
+menuitem[data-l10n-id="text-action-undo"],
+menuitem[data-l10n-id="text-action-redo"],
+.textbox-contextmenu menuseparator,
+#paste-and-go,
+menuitem[data-l10n-id="text-action-select-all"] {
+    display: none !important;
+}
+
+/* ----------------------------------------------------------
+   4. САЙДБАР И ВКЛАДКИ
+
+   Скрытие:
+   - sidebarRevampSeparator             — разделитель в новом сайдбаре
+   - sidebar-tools-and-extensions-splitter — сплиттер над кнопкой настроек
+   ---------------------------------------------------------- */
+#sidebarRevampSeparator,
+#sidebar-tools-and-extensions-splitter {
+    display: none !important;
+}
+
+/* основной сплиттер сайдбара — сужен и скрыт визуально,
+   но оставлен функциональным (opacity вместо display: none) */
+#sidebar-splitter {
+    width: 1px !important;
+    opacity: 0 !important;
+}
+
+/* индикатор изменения размера в новом сайдбаре */
+#sidebar-launcher-splitter {
+    width: 1px !important;
+}
+
+/* hover на сплиттере нового сайдбара (только при включённом revamp) */
+@media -moz-pref("sidebar.revamp") {
+    .sidebar-splitter:hover {
+        display: none !important;
+    }
+}
+
+/* hover на маленьких разделителях: под закреплёнными вкладками */
+#vertical-pinned-tabs-splitter:hover {
+    background-color: #ebdbb2 !important;
+}
+
+/* эффекты пунктов в сайдбаре с закладками  */
+/* фон строки при наведении */
+#bookmarks-view treechildren::-moz-tree-row(hover) {
+    background-color: #3c3836 !important;
+}
+
+/* выбранная строка в фокусе */
+#bookmarks-view treechildren::-moz-tree-row(selected, focus) {
+    background-color: #665c54 !important;
+    outline: none !important;
+}
+
+/* выбранная строка без фокуса */
+#bookmarks-view treechildren::-moz-tree-row(selected) {
+    background-color: #3c3836 !important;
+    outline: none !important;
+}
+
+/* фон вкладки при наведении */
+.tab-background:hover,
+#tabs-newtab-button:hover {
+    background-color: #3c3836 !important;
+}
+
+/* фон активной вкладки при наведении — чуть светлее обычного hover */
+.tabbrowser-tab[visuallyselected]:hover .tab-background {
+    background-color: #665c54 !important;
+}
+
+/* скрытие пунктов контекстного меню вкладок */
+#context_moveTabToNewGroup,
+#context_moveTabToSplitView,
+#context_unloadTab,
+#context_duplicateTab,
+#context_moveTabOptions,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeDuplicateTabs,
+#context_closeTabOptions,
+.share-tab-url-item,
+#context_sendTabToDevice,
+#context_sendTabToDeviceSeparator {
+    display: none !important;
+}
+
+/* ----------------------------------------------------------
+   5. КОНТЕКСТНЫЕ МЕНЮ И ПОПАПЫ
+   ---------------------------------------------------------- */
+
+/* базовые стили popupа и его скроллбокса */
+menupopup,
+.menupopup-arrowscrollbox {
+    background-color: #282828 !important;
+    color: #ebdbb2 !important;
+
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+
+    --panel-shadow: none !important;
+    --panel-shadow-margin: 0 !important;
+
+    appearance: none !important;
+}
+
+/* position: relative нужен, чтобы рамка через ::before
+   позиционировалась относительно самого popup */
+menupopup {
+    position: relative !important;
+}
+
+/* рамка вокруг popup вместо стандартной тени */
+menupopup::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border: 1px solid #665c54 !important;
+    pointer-events: none !important;
+    box-sizing: border-box !important;
+}
+
+/* пункты меню */
+menu,
+menuitem {
+    background-color: #282828 !important;
+    color: #ebdbb2 !important;
+}
+
+/* пункты меню при наведении/выборе клавиатурой
+   (_moz-menuactive — атрибут, который Firefox навешивает
+   на активный пункт меню) */
+menu[_moz-menuactive="true"],
+menuitem[_moz-menuactive="true"] {
+    background-color: #3c3836 !important;
+    color: #ebdbb2 !important;
+}
+
+/* hover у кнопок subview (панели типа "Синхронизация", "Закладки" внутри
+   гамбургер-меню, где пункты это не menuitem а subviewbutton) */
+.subviewbutton:hover {
+    background-color: #3c3836 !important;
+}
+
+/* скрытие пунктов меню папки закладок */
+.openintabs-menuitem,
+.bookmarks-actions-menuseparator {
+    display: none !important;
+}
+
+/* скрытие пунктов контекстного меню закладок и панели закладок */
 #placesContext_open\:newcontainertab,
 #placesContext_open\:newprivatewindow,
 #placesCmd_cut,
@@ -100,25 +317,11 @@ panel[type="arrow"] {
 #placesContext_openBookmarkContainer\:tabs,
 #placesContext_openSeparator,
 #show-other-bookmarks_PersonalToolbar,
-#toggle_PersonalToolbar,
-#sidebarRevampSeparator,
-#sidebar-tools-and-extensions-splitter,
+#toggle_PersonalToolbar {
+    display: none !important;
+}
 
-/* контекстное меню вкладок */
-#context_moveTabToNewGroup,
-#context_moveTabToSplitView,
-#context_unloadTab,
-#context_duplicateTab,
-#context_moveTabOptions,
-#context_reopenInContainer,
-#context_selectAllTabs,
-#context_closeDuplicateTabs,
-#context_closeTabOptions,
-.share-tab-url-item,
-#context_sendTabToDevice,
-#context_sendTabToDeviceSeparator,
-
-/* контекстное меню страницы */
+/* скрытие пунктов контекстного меню страницы */
 #context-sendimage,
 #context-savepage,
 #context-viewsource,
@@ -127,16 +330,11 @@ panel[type="arrow"] {
 #context-sep-sendpagetodevice,
 #context-sendpagetodevice,
 #context-media-eme-separator,
-#context-sep-selectall,
+#context-sep-selectall {
+    display: none !important;
+}
 
-/* контекстное меню тулбара */
-#toolbar-context-move-to-panel,
-#toolbar-context-selectAllTabs,
-#tabbarItemsMenuSeparator,
-#toolbar-context-customize-sidebar,
-#toolbar-context-toggle-vertical-tabs,
-
-/* контекстное меню ссылок */
+/* скрытие пунктов контекстного меню ссылок */
 #context-openlinkinsplitview,
 #context-openlinkinusercontext-menu,
 #context-openlinkprivate,
@@ -145,33 +343,23 @@ panel[type="arrow"] {
 #context-sendlinktodevice,
 #context-sep-sendlinktodevice,
 #context-searchselect,
-#context-sep-copylink,
-
-/* контекстное меню изображений */
-#context-visual-search,
-#context-copyimage-contents,
-#context-copyimage,
-
-/* контекстное меню адресной строки */
-#strip-on-share,
-menuitem[data-l10n-id="text-action-undo"],
-menuitem[data-l10n-id="text-action-redo"],
-.textbox-contextmenu menuseparator,
-#paste-and-go,
-menuitem[data-l10n-id="text-action-select-all"] {
+#context-sep-copylink {
     display: none !important;
 }
 
-/* приколюха с контекстным меню для кнопки добавления новой вкладки */
-/* скрываем все кроме первого элемента */
+/* скрытие пунктов контекстного меню изображений */
+#context-visual-search,
+#context-copyimage-contents,
+#context-copyimage {
+    display: none !important;
+}
+
+/* приколюха — меню кнопки новой вкладки:
+   скрываем всё кроме первого пункта, первый делаем
+   некликабельным и подменяем ему текст */
 #new-tab-button-popup menuitem:not(:first-child),
 #new-tab-button-popup menuseparator {
     display: none !important;
-}
-
-/* делаем первый элемент неактивным */
-#new-tab-button-popup menuitem:first-child {
-    pointer-events: none !important;
 }
 
 #new-tab-button-popup menuitem:first-child {
@@ -188,77 +376,14 @@ menuitem[data-l10n-id="text-action-select-all"] {
 }
 
 /* ----------------------------------------------------------
-   4. ВЫПАДАЮЩИЕ / КОНТЕКСТНЫЕ МЕНЮ (menupopup)
+   6. ДИАЛОГОВЫЕ ОКНА
+
+   Firefox использует один и тот же механизм субдиалогов
+   для разных окон (смена шорткатов, "добавить папку" и т.п.).
+   Правки тут влияют на все такие окна сразу.
    ---------------------------------------------------------- */
-menupopup,
-.menupopup-arrowscrollbox {
-    background-color: #282828 !important;
-    color: #ebdbb2 !important;
 
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-
-    --panel-shadow: none !important;
-    --panel-shadow-margin: 0 !important;
-
-    appearance: none !important;
-}
-
-/* нужен position: relative, чтобы рамка через ::before ниже
-   позиционировалась относительно самого popup */
-menupopup {
-    position: relative !important;
-}
-
-/* рамка вокруг popup вместо стандартной тени */
-menupopup::before {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 !important;
-    border: 1px solid #665c54 !important;
-    pointer-events: none !important;
-    box-sizing: border-box !important;
-}
-
-/* пункты меню в обычном состоянии */
-menu,
-menuitem {
-    background-color: #282828 !important;
-    color: #ebdbb2 !important;
-}
-
-/* пункты меню при наведении/выборе клавиатурой
-   (_moz-menuactive — атрибут, который Firefox сам навешивает
-   на активный в данный момент пункт меню) */
-menu[_moz-menuactive="true"],
-menuitem[_moz-menuactive="true"] {
-    background-color: #3c3836 !important;
-    color: #ebdbb2 !important;
-}
-
-/* разделители пунктов меню
-menuseparator {
-    border-color: #665c54 !important;
-    opacity: 1 !important;
-}*/
-
-/* меню папок */
-.openintabs-menuitem,
-.bookmarks-actions-menuseparator {
-    display: none !important;
-}
-
-/* всплывающее окно уведомлений (например, при сохранении пароля) */
-#notification-popup-box {
-    background-color: #665c54 !important;
-}
-
-.subviewbutton:hover {
-    background-color: #3c3836 !important;
-}
-
-/* диалоговые окна, появляются в разных местах, вероятно, используют один и тот же класс */
+/* базовые цвета диалога (например, диалог смены шорткатов) */
 #commonDialog {
     background-color: #282828 !important;
     color: #ebdbb2 !important;
@@ -266,8 +391,9 @@ menuseparator {
     min-height: fit-content !important;
 }
 
-/* при смене шрифтов в браузере у них появляется проблема с высотой,
-это, кажется, решает эту проблему */
+/* фикс высоты для диалогов типа "Press new key":
+   при нестандартном шрифте JS рассчитывает высоту неверно,
+   min-height: fit-content не даёт окну сжаться меньше содержимого */
 .sizeDetermined,
 .sizeDetermined::part(content-box),
 .sizeDetermined #infoBody,
@@ -276,138 +402,56 @@ menuseparator {
     min-height: fit-content !important;
 }
 
-/* ----------------------------------------------------------
-   5. САЙДБАР
-   ---------------------------------------------------------- */
-
-#sidebar-splitter {
-    width: 1px !important;
-    opacity: 0 !important;
+/* рамка и отступ для субдиалогов (bookmarkProperties и подобные) */
+.dialogTemplate.dialogOverlay.dialogOverlay-window-modal-dialog-subdialog {
+    border: 1px solid #665c54 !important;
+    margin-top: 65px;
 }
 
-@media -moz-pref("sidebar.revamp") {
-    .sidebar-splitter:hover {
-        background-color: #665c54 !important;
-    }
+/* сбрасываем margin-top у dialogBox, чтобы содержимое
+   не уезжало вниз относительно рамки */
+.dialogBox {
+    margin-top: 0px !important;
 }
 
-/* маленькие разделители на сайдбаре: над кнопкой настроек
-   и под закреплёнными вкладками */
-#sidebar-tools-and-extensions-splitter:hover,
-#vertical-pinned-tabs-splitter:hover {
-    background-color: #ebdbb2 !important;
-}
-
-/* индикатор изменения размера сайдбара */
-#sidebar-launcher-splitter {
-    width: 1px !important;
-}
-
-.sidebar-panel[lwt-sidebar],
-.sidebar-placesTreechildren {
-    outline: none !important;
-}
-
-.tab-background:hover,
-#tabs-newtab-button:hover {
-    background-color: #3c3836 !important;
-}
-
-.tabbrowser-tab[visuallyselected]:hover .tab-background {
-    background-color: #665c54 !important;
+/* убираем chrome-offset чтобы диалог не смещался от верха */
+#window-modal-dialog {
+    --chrome-offset: 0px;
 }
 
 /* ----------------------------------------------------------
-   6. АДРЕСНАЯ СТРОКА / ПОЛЯ ВВОДА / ЧЕКБОКСЫ
+   7. ПАНЕЛЬ РЕДАКТИРОВАНИЯ ЗАКЛАДКИ (editBMPanel)
+
+   Две разные точки входа:
+   - editBMPanel_* — маленькая doorhanger-панель (звёздочка в адресной строке)
+   - bookmarkpropertiesdialog — отдельное окно (ПКМ → Свойства)
    ---------------------------------------------------------- */
-#nav-bar-customization-target {
-    margin-top: 2px !important;
-    margin-bottom: 3px !important;
-}
-.urlbar-input-container .button-background {
-    background-color: #665c54 !important;
-}
 
-.urlbar-input::placeholder {
-    opacity: 1 !important;
-    color: #665c54 !important;
-}
-
-/* текстовое поле (например, поиск в библиотеке закладок) */
-#input {
-    color: #ebdbb2 !important;
-    border: 1px solid #665c54 !important;
-    background-color: #3c3836 !important;
-    background-image: none !important;
-    padding-inline-start: 5px !important;
-}
-
-#input::placeholder {
-    color: #665c54 !important;
-}
-
-#input:focus-visible {
-    outline: none !important;
-    border: 1px solid #ebdbb2 !important;
-}
-
-.date-card {
-    background-color: #3c3836 !important;
-}
-
-.findbar-textbox {
-    border: 1px solid #665c54 !important;
-}
-
-/* чекбоксы (настройки, диалоги) */
-.checkbox-check {
-    appearance: none !important;
-    background-color: #3c3836 !important;
-    border: 1px solid #665c54 !important;
-}
-
-.checkbox-check:hover {
-    background-color: #665c54 !important;
-}
-
-.checkbox-check[checked] {
-    background-color: #ebdbb2 !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23282828' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    border-color: #ebdbb2 !important;
-}
-
-.checkbox-check[checked]:hover {
-    background-color: #bdae93 !important;
-}
-
-.checkbox-check[disabled] {
-    background-color: #1d2021 !important;
-    border: 1px solid #3c3836 !important;
-}
-
-/* ----------------------------------------------------------
-   7. ПАНЕЛЬ "РЕДАКТИРОВАНИЕ ЗАКЛАДКИ" (editBMPanel)
-   ---------------------------------------------------------- */
+/* doorhanger-панель */
 #editBookmarkPanelContent {
-    color: #ebdbb2;
+    color: #ebdbb2 !important;
 }
 
-/* скрывает обвязку кнопок-тегов в панели закладки */
+/* скрывает кнопки тегов в doorhanger-панели —
+   opacity вместо display: none, чтобы не ломать layout */
 .buttons-wrapper {
     opacity: 0 !important;
     pointer-events: none !important;
 }
 
-/* поле с именем закладки */
+/* поле имени закладки */
 #editBMPanel_namePicker {
     color: #ebdbb2 !important;
     background-color: #3c3836 !important;
     border: 1px solid #665c54 !important;
 }
 
-/* --- дерево выбора папки --- */
+/* дерево выбора папки.
+   treechildren рисует строки виртуально (не обычные DOM-узлы),
+   поэтому фон/текст/иконка — три отдельных псевдоэлемента:
+   ::-moz-tree-row (фон), ::-moz-tree-cell-text (текст),
+   ::-moz-tree-image (иконка). Цвет каждому нужно задавать явно
+   под каждое состояние — он не наследуется от row. */
 #editBMPanel_folderTree {
     color: #ebdbb2 !important;
     background-color: #3c3836 !important;
@@ -417,15 +461,6 @@ menuseparator {
 #editBMPanel_folderTree treechildren::-moz-tree-row {
     width: 100% !important;
 }
-
-/* treechildren рисует строки сама (это не обычные DOM-узлы),
-   поэтому фон/текст/иконка строки — три отдельных
-   псевдоэлемента: ::-moz-tree-row (фон), ::-moz-tree-cell-text
-   (текст), ::-moz-tree-image (иконка папки). Каждому нужно
-   явно задавать цвет под каждое состояние — иначе он не
-   "наследуется" от row и остаётся системным (отсюда, например,
-   белый текст/иконка у выделенной строки, если задать цвет
-   только на row). */
 
 /* наведение мышью */
 #editBMPanel_folderTree treechildren::-moz-tree-row(hover) {
@@ -462,20 +497,7 @@ menuseparator {
     fill: #ebdbb2 !important;
 }
 
-/* отдельное окно с редактированием закладки */
-#window-modal-dialog {
-    --chrome-offset: 0px;
-}
-
-.dialogTemplate.dialogOverlay.dialogOverlay-window-modal-dialog-subdialog {
-    border: 1px solid #665c54 !important;
-    margin-top: 65px;
-}
-
-.dialogBox {
-    margin-top: 0px !important;
-}
-
+/* отдельное окно свойств закладки */
 #bookmarkpropertiesdialog {
     color: #ebdbb2 !important;
     background-color: #282828 !important;
@@ -496,7 +518,67 @@ menuseparator {
 }
 
 /* ----------------------------------------------------------
-   8. ВЫДЕЛЕНИЕ ТЕКСТА (::selection)
+   8. ПОЛЯ ВВОДА И ЧЕКБОКСЫ
+   ---------------------------------------------------------- */
+
+/* текстовое поле (например, поиск в библиотеке закладок) */
+#input {
+    color: #ebdbb2 !important;
+    border: 1px solid #665c54 !important;
+    background-color: #3c3836 !important;
+    background-image: none !important;
+    padding-inline-start: 5px !important;
+}
+
+#input::placeholder {
+    color: #665c54 !important;
+}
+
+#input:focus-visible {
+    outline: none !important;
+    border: 1px solid #ebdbb2 !important;
+}
+
+/* карточка с датой (используется в некоторых диалогах) */
+.date-card {
+    background-color: #3c3836 !important;
+}
+
+/* поле поиска на странице (Ctrl+F) */
+.findbar-textbox {
+    border: 1px solid #665c54 !important;
+}
+
+/* чекбоксы */
+.checkbox-check {
+    appearance: none !important;
+    background-color: #3c3836 !important;
+    border: 1px solid #665c54 !important;
+}
+
+.checkbox-check:hover {
+    background-color: #665c54 !important;
+}
+
+.checkbox-check[checked] {
+    background-color: #ebdbb2 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23282828' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border-color: #ebdbb2 !important;
+}
+
+.checkbox-check[checked]:hover {
+    background-color: #bdae93 !important;
+}
+
+.checkbox-check[disabled] {
+    background-color: #1d2021 !important;
+    border: 1px solid #3c3836 !important;
+}
+
+/* ----------------------------------------------------------
+   9. ВЫДЕЛЕНИЕ ТЕКСТА
    ::-moz-selection — устаревший алиас, оставлен для
    совместимости со старыми/встроенными контекстами рендеринга.
    ---------------------------------------------------------- */
