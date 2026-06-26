@@ -18,11 +18,8 @@
     box-shadow: none !important;
     text-shadow: none !important;
 
-    animation-duration: 0.01ms !important;
     animation-delay: 0ms !important;
-    animation-iteration-count: 1 !important;
 
-    transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
 }
 
@@ -51,6 +48,13 @@
     --button-background-color: #3c3836 !important;
     --button-background-color-hover: #665c54 !important;
     --button-background-color-active: #665c54 !important;
+}
+
+.animatable-menupopup,
+panel[type="arrow"] {
+    &:not([animate="false"]) {
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* ----------------------------------------------------------
@@ -156,6 +160,31 @@ menuitem[data-l10n-id="text-action-select-all"] {
     display: none !important;
 }
 
+/* приколюха с контекстным меню для кнопки добавления новой вкладки */
+/* скрываем все кроме первого элемента */
+#new-tab-button-popup menuitem:not(:first-child),
+#new-tab-button-popup menuseparator {
+    display: none !important;
+}
+
+/* делаем первый элемент неактивным */
+#new-tab-button-popup menuitem:first-child {
+    pointer-events: none !important;
+}
+
+#new-tab-button-popup menuitem:first-child {
+    pointer-events: none !important;
+}
+
+#new-tab-button-popup menuitem:first-child .menu-text {
+    display: none !important;
+}
+
+#new-tab-button-popup menuitem:first-child::before {
+    content: "мальчик, блютуз подключи мне" !important;
+    color: #ebdbb2 !important;
+}
+
 /* ----------------------------------------------------------
    4. ВЫПАДАЮЩИЕ / КОНТЕКСТНЫЕ МЕНЮ (menupopup)
    ---------------------------------------------------------- */
@@ -235,10 +264,6 @@ menuseparator {
     min-height: fit-content !important;
 }
 
-.dialogBox {
-    min-height: calc(177px);
-}
-
 /* при смене шрифтов в браузере у них появляется проблема с высотой,
 это, кажется, решает эту проблему */
 .sizeDetermined,
@@ -254,7 +279,7 @@ menuseparator {
    ---------------------------------------------------------- */
 @media -moz-pref("sidebar.revamp") {
     .sidebar-splitter:hover {
-        background-color: #ebdbb2 !important;
+        background-color: #665c54 !important;
     }
 }
 
@@ -426,10 +451,22 @@ menuseparator {
 }
 
 /* отдельное окно с редактированием закладки */
+#window-modal-dialog {
+    --chrome-offset: 0px;
+}
+
+.dialogTemplate.dialogOverlay.dialogOverlay-window-modal-dialog-subdialog {
+    border: 1px solid #665c54 !important;
+    margin-top: 65px;
+}
+
+.dialogBox {
+    margin-top: 0px !important;
+}
+
 #bookmarkpropertiesdialog {
     color: #ebdbb2 !important;
     background-color: #282828 !important;
-    border: 1px solid #665c54 !important;
 }
 
 #titleContainer,
