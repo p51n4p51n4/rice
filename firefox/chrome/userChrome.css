@@ -101,6 +101,8 @@ panel[type="arrow"] {
 #placesContext_openSeparator,
 #show-other-bookmarks_PersonalToolbar,
 #toggle_PersonalToolbar,
+#sidebarRevampSeparator,
+#sidebar-tools-and-extensions-splitter,
 
 /* контекстное меню вкладок */
 #context_moveTabToNewGroup,
@@ -277,6 +279,12 @@ menuseparator {
 /* ----------------------------------------------------------
    5. САЙДБАР
    ---------------------------------------------------------- */
+
+#sidebar-splitter {
+    width: 1px !important;
+    opacity: 0 !important;
+}
+
 @media -moz-pref("sidebar.revamp") {
     .sidebar-splitter:hover {
         background-color: #665c54 !important;
@@ -312,6 +320,10 @@ menuseparator {
 /* ----------------------------------------------------------
    6. АДРЕСНАЯ СТРОКА / ПОЛЯ ВВОДА / ЧЕКБОКСЫ
    ---------------------------------------------------------- */
+#nav-bar-customization-target {
+    margin-top: 2px !important;
+    margin-bottom: 3px !important;
+}
 .urlbar-input-container .button-background {
     background-color: #665c54 !important;
 }
