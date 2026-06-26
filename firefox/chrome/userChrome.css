@@ -198,12 +198,6 @@ menuitem[data-l10n-id="text-action-select-all"] {
     background-color: #3c3836 !important;
 }
 
-/* выбранная строка в фокусе */
-#bookmarks-view treechildren::-moz-tree-row(selected, focus) {
-    background-color: #665c54 !important;
-    outline: none !important;
-}
-
 /* выбранная строка без фокуса */
 #bookmarks-view treechildren::-moz-tree-row(selected) {
     background-color: #3c3836 !important;
@@ -214,11 +208,6 @@ menuitem[data-l10n-id="text-action-select-all"] {
 .tab-background:hover,
 #tabs-newtab-button:hover {
     background-color: #3c3836 !important;
-}
-
-/* фон активной вкладки при наведении — чуть светлее обычного hover */
-.tabbrowser-tab[visuallyselected]:hover .tab-background {
-    background-color: #665c54 !important;
 }
 
 /* скрытие пунктов контекстного меню вкладок */
