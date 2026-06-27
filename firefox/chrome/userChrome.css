@@ -25,11 +25,9 @@
 *::before,
 *::after {
     font-family: "IosevkaTermSlab Nerd Font Mono" !important;
-
     border-radius: 0 !important;
     box-shadow: none !important;
     text-shadow: none !important;
-
     animation-delay: 0ms !important;
     transition-delay: 0ms !important;
 }
@@ -54,29 +52,37 @@ panel[type="arrow"] {
 :root {
     --focus-outline-width: 1px !important;
     --focus-outline-color: #ebdbb2 !important;
-
-    --link-color: #bdae93 !important;
+    --cfr-active-color: #ebdbb2 !important;
+    --link-color: #a89984 !important;
     --link-color-hover: #ebdbb2 !important;
     --link-color-active: #ebdbb2 !important;
-
     --color-accent-attention: #ebdbb2 !important;
     --color-accent-primary: #ebdbb2 !important;
-    --color-accent-primary-hover: #bdae93 !important;
-    --color-accent-primary-active: #bdae93 !important;
-
+    --color-accent-primary-hover: #d5c4a1 !important;
+    --color-accent-primary-active: #d5c4a1 !important;
     --button-text-color: #ebdbb2 !important;
     --button-text-color-primary: #282828 !important;
     --button-background-color: #3c3836 !important;
     --button-background-color-hover: #665c54 !important;
     --button-background-color-active: #665c54 !important;
-
     --urlbar-icon-fill-opacity: 1 !important;
     --urlbar-box-background-color: #665c54 !important;
+    --urlbar-background-shadow: none !important;
     --urlbar-box-background-color-focus: #665c54 !important;
     --urlbar-box-background-color-hover: #665c54 !important;
     --urlbarview-background-color-selected: #665c54 !important;
-
+    --urlbarview-text-color-action: #ebdbb2 !important;
+    --toolbarbutton-icon-fill-attention-text-light: #ebdbb2 !important;
+    --toolbarbutton-icon-fill-attention-text-dark: #282828 !important;
     --panel-background-color-dimmed: #665c54 !important;
+    --focus-outline-color: #ebdbb2 !important;
+    --drag-drop-transition-duration: 0.01ms !important;
+    --cfr-animation-duration: 0.01ms !important;
+    --inactive-window-transition: 0.01ms !important;
+    --ext-theme-background-transition: 0.01ms !important;
+    --drag-drop-transition-duration: 0.01ms !important;
+    --download-progress-paused-color: #a89984 !important;
+    --download-progress-flare-color: #ebdbb2 !important;
 }
 
 /* ----------------------------------------------------------
@@ -168,9 +174,7 @@ menuitem[data-l10n-id="text-action-select-all"] {
     background-color: #665c54 !important;
 }
 
-/* полоска, которая появляется при наведении на край сайдбара,
-показывает, что его можно увеличить или уменьшить*/
-#sidebarRevampSeparator,
+/* полоска, на сайдбаре которая отделяет кнопку меню от вкладок */
 #sidebar-tools-and-extensions-splitter {
     display: none !important;
 }
@@ -190,7 +194,7 @@ menuitem[data-l10n-id="text-action-select-all"] {
 /* hover на сплиттере нового сайдбара (только при включённом revamp) */
 @media -moz-pref("sidebar.revamp") {
     .sidebar-splitter:hover {
-        display: none !important;
+        background-color: #665c54 !important;
     }
 }
 
