@@ -1,6 +1,10 @@
 # ОСНОВНЫЕ ПАРАМЕТРЫ
 #
 
+# снижает задержку отображения — рендерит кадр как можно позже
+# значение в миллисекундах, обычно ставят 1
+output * max_render_time 1
+
 # обои
 output * bg /home/p51n4/Pictures/the_nature_of_fear.png fill
 
@@ -30,8 +34,12 @@ bar {
 }
 
 # перезагрузка оболочки
-#27=r
-bindcode $mod+27 reload
+# r=27
+bindcode $mod+shift+27 reload
+
+# разворот окна на весь экран
+# f=41
+bindcode $mod++shift+41 fullscreen toggle
 
 
 
