@@ -89,7 +89,6 @@ panel[type="arrow"] {
     --toolbarbutton-icon-fill-attention-text-light: #ebdbb2 !important;
     --toolbarbutton-icon-fill-attention-text-dark: #282828 !important;
     --panel-background-color-dimmed: #665c54 !important;
-    --focus-outline-color: #ebdbb2 !important;
     --drag-drop-transition-duration: 0.1s linear !important;
     --cfr-animation-duration: 0.1s linear !important;
     --inactive-window-transition: 0.1s linear !important;
@@ -100,6 +99,21 @@ panel[type="arrow"] {
     --soundplaying-removal-delay: 0.01ms !important;
     --chrome-content-separator-color: none !important;
     --sidebar-box-background: #3c3836 !important;
+    --trustpanel-graphic-bg: #3c3836 !important;
+    --trustpanel-highlight-bg: #665c54 !important;
+    --trustpanel-warning-bg: #cc241d !important;
+    --trustpanel-inner-border: 1px solid #665c54 !important;
+    --trustpanel-inner-warning-border: 1px solid #665c54 !important;
+}
+
+:root {
+  &[lwtheme] {
+    @media not (prefers-contrast) {
+      {
+        --focus-outline-color: #ebdbb2 !important;
+      }
+    }
+  }
 }
 
 /* ----------------------------------------------------------
@@ -209,7 +223,7 @@ menuitem[data-l10n-id="text-action-select-all"] {
 }
 
 .toolbarbutton-icon {
-    margin-left: 6px !important;
+    margin-left: 4px !important;
 }
 
 .close-icon:hover {
