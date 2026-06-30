@@ -37,23 +37,18 @@
 }
 
 #tabbrowser-tabbox {
-    border: 1px solid #665c54 !important;
+    border-top: 1px solid #665c54 !important;
+    border-left: 1px solid #665c54 !important;
+}
+
+:root[inFullscreen] #tabbrowser-tabbox {
+    border: none !important;
 }
 
 #sidebar-box {
     margin-top: 1px !important;
     margin-bottom: 1px !important;
     margin-left: 1px !important;
-}
-
-/* Отдельный фикс для анимированных попапов и стрелочных панелей —
-   они используют собственный механизм transition, который не
-   перекрывается глобальным reset'ом выше. */
-.animatable-menupopup,
-panel[type="arrow"] {
-    &:not([animate="false"]) {
-        transition-duration: 0.01ms !important;
-    }
 }
 
 /* ----------------------------------------------------------
@@ -89,14 +84,8 @@ panel[type="arrow"] {
     --toolbarbutton-icon-fill-attention-text-light: #ebdbb2 !important;
     --toolbarbutton-icon-fill-attention-text-dark: #282828 !important;
     --panel-background-color-dimmed: #665c54 !important;
-    --drag-drop-transition-duration: 0.1s linear !important;
-    --cfr-animation-duration: 0.1s linear !important;
-    --inactive-window-transition: 0.1s linear !important;
-    --ext-theme-background-transition: 0.1s linear !important;
-    --drag-drop-transition-duration: 0.1s linear !important;
     --download-progress-paused-color: #a89984 !important;
     --download-progress-flare-color: #ebdbb2 !important;
-    --soundplaying-removal-delay: 0.01ms !important;
     --chrome-content-separator-color: none !important;
     --sidebar-box-background: #3c3836 !important;
     --trustpanel-graphic-bg: #3c3836 !important;
@@ -104,6 +93,14 @@ panel[type="arrow"] {
     --trustpanel-warning-bg: #cc241d !important;
     --trustpanel-inner-border: 1px solid #665c54 !important;
     --trustpanel-inner-warning-border: 1px solid #665c54 !important;
+    --default-focusring-width: none !important;
+    --default-focusring: none !important;
+    --sidebar-border-color: #665c54 !important;
+    --tabs-navbar-separator-color: #665c54 !important;
+    --tabs-navbar-separator-style: solid;
+    --short-notification-background: #282828 !important;
+    --short-notification-gradient: none !important;
+    --warning-icon-bgcolor: #cc241d !important;
 }
 
 :root {
@@ -215,6 +212,10 @@ menuitem[data-l10n-id="text-action-select-all"] {
     margin-right: 6px !important;
 }
 
+.tab-content {
+    margin-bottom: 2px !important;
+}
+
 #tabs-newtab-button {
     margin-top: 0px !important;
     margin-left: 7px !important;
@@ -259,6 +260,10 @@ menuitem[data-l10n-id="text-action-select-all"] {
     background-color: #ebdbb2 !important;
 }
 
+#sidebar-search-container {
+    padding: 7px !important;
+}
+
 /* эффекты пунктов в сайдбаре с закладками  */
 /* фон строки при наведении */
 #bookmarks-view treechildren::-moz-tree-row(hover) {
@@ -269,6 +274,10 @@ menuitem[data-l10n-id="text-action-select-all"] {
 #bookmarks-view treechildren::-moz-tree-row(selected) {
     background-color: #3c3836 !important;
     outline: none !important;
+}
+
+#bookmarks-view treechildren::-moz-tree-row {
+    -moz-appearance: none !important;
 }
 
 /* фон вкладки при наведении */
@@ -296,6 +305,42 @@ menuitem[data-l10n-id="text-action-select-all"] {
 /* ----------------------------------------------------------
    5. КОНТЕКСТНЫЕ МЕНЮ И ПОПАПЫ
    ---------------------------------------------------------- */
+
+
+
+@layer tokens-foundation {
+:root, :host {
+    --message-bar-background-color: #3c3836 !important;
+    --message-bar-border-color: #665c54 !important;
+    --message-bar-border-radius: 0px !important;
+    --message-bar-border-width: 1px !important;
+    --message-bar-icon-color: #ebdbb2 !important;
+    --message-bar-icon-size: 0px !important;
+    --message-bar-text-color: #ebdbb2 !important;
+}
+}
+
+notification-message.infobar::before {
+    display: none !important;
+}
+
+.infobar {
+    background-color: #504945 !important;
+    color: #ebdbb2 !important;
+    border: 1px solid #665c54 !important;
+}
+
+.container .icon-container {
+    display: none !important;
+}
+
+.container {
+    padding-inline: none !important;
+}
+
+.content {
+    margin-inline-start: 0px !important;
+}
 
 /* базовые стили popupа и его скроллбокса */
 menupopup,
