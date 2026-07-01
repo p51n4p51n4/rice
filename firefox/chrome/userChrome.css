@@ -101,6 +101,11 @@
     --short-notification-background: #282828 !important;
     --short-notification-gradient: none !important;
     --warning-icon-bgcolor: #cc241d !important;
+    --animation-easing-function: linear !important;
+    --tab-dragover-transition: transform 0.01ms linear !important;
+    --tab-sharing-icon-animation: 0.01ms linear tab-sharing-icon-pulse infinite !important;
+    --ext-theme-background-transition: background-color 0.01ms linear !important;
+    --inactive-window-transition: 0.01ms linear !important;
 }
 
 :root {
@@ -135,6 +140,10 @@
 #reader-mode-button,
 .image-container {
     display: none !important;
+}
+
+.toolbarbutton-badge-stack {
+    padding-right: 11px !important;
 }
 
 /* отступы панели навигации — компенсация под кастомный шрифт */
